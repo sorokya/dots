@@ -1,40 +1,69 @@
 -- space for leader
 vim.g.mapleader = " "
 
+-- import whichkey plugin safely
+local status, whichkey = pcall(require, "which-key")
+if not status then
+	return
+end
+
 local keymap = vim.keymap
 
 -- general keymaps
 
-keymap.set("i", "jk", "<ESC>") -- leave insert mode with jk 
-
-keymap.set("n", "<leader>nh", ":nohl<CR>") -- clear search highlights
-
+keymap.set("i", "jk", "<ESC>") -- leave insert mode with jk
+keymap.set("n", "<ESC>", "<cmd> nohl <cr>", {
+	desc = "Clear search highlights",
+})
 keymap.set("n", "x", '"_x') -- delete without copying to register
 
-keymap.set("n", "<leader>+", "<C-a>") -- increment
-keymap.set("n", "<leader>-", "<C-x>") -- decrement
-
-keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
-
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") -- next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") -- previous tab
-
--- plugin keymaps
-
--- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
-
--- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-
--- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+whichkey.register({
+	s = {
+		name = "Split",
+		v = { "<C-w>v", "Split window vertically" },
+		h = { "<C-w>s", "Split window horizontally" },
+		x = { "<cmd> close <cr>", "Close active split" },
+		m = { "<cmd> MaximizerToggle <cr>", "Maximize active split" },
+	},
+	g = {
+		name = "Git",
+		g = { "<cmd> Neogit <cr>", "Neogit" },
+		j = { "<cmd> Gitsigns next_hunk <cr>", "Next hunk" },
+		k = { "<cmd> Gitsigns prev_hunk <cr>", "Previous hunk" },
+		l = { "<cmd> GitBlameToggle <cr>", "Blame" },
+		p = { "<cmd> Gitsigns preview_hunk <cr>", "Preview hunk" },
+		r = { "<cmd> Gitsigns reset_hunk <cr>", "Reset hunk" },
+		R = { "<cmd> Gitsigns reset_buffer <cr>", "Reset buffer" },
+		s = { "<cmd> Gitsigns stage_hunk <cr>", "Stage hunk" },
+		u = { "<cmd> Gitsigns undo_stage_hunk <cr>", "Undo stage hunk" },
+		n = { ":!git checkout -b ", "Checkout new branch" },
+		o = { "<cmd> Telescope git_status <cr>", "Open changed files" },
+		b = { "<cmd> Telescope git_branches <cr>", "Checkout branch" },
+		c = { "<cmd> Telescope git_commits <cr>", "Checkout commit" },
+		f = { "<cmd> Telescope git_bcommits <cr>", "Checkout buffer commit" },
+		d = { "<cmd> Gitsigns diffthis HEAD <cr>", "Diff" },
+	},
+	t = {
+		name = "Tab",
+		o = { "<cmd> tabnew <cr>", "Open new tab" },
+		x = { "<cmd> tabclose <cr>", "Close tab" },
+		n = { "<cmd> tabn <cr>", "Next tab" },
+		p = { "<cmd> tabp <cr>", "Previous tab" },
+	},
+	e = { "<cmd> NvimTreeToggle <cr>", "Toggle file tree" },
+	f = {
+		name = "Find",
+		b = { "<cmd> Telescope git_branches <cr>", "Checkout branch" },
+		f = { "<cmd> Telescope find_files <cr>", "Find files" },
+		t = { "<cmd> Telescope live_grep <cr>", "Find text" },
+		s = { "<cmd> Telescope grep_string <cr>", "Find string" },
+		h = { "<cmd> Telescope help_tags <cr>", "Help" },
+		H = { "<cmd> Telescope highlights <cr>", "Highlights" },
+		l = { "<cmd> Telescope resume <cr>", "Last search" },
+		M = { "<cmd> Telescope man_pages <cr>", "Man pages" },
+		r = { "<cmd> Telescope oldfiles <cr>", "Recent file" },
+		R = { "<cmd> Telescope registers <cr>", "Registers" },
+		k = { "<cmd> Telescope keymaps <cr>", "Keymaps" },
+		C = { "<cmd> Telescope commands <cr>", "Commands" },
+	},
+}, { prefix = "<leader>" })
