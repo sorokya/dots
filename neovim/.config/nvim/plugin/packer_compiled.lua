@@ -104,6 +104,16 @@ _G.packer_plugins = {
     path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot-cmp"] = {
+    loaded = true,
+    path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/copilot-cmp",
+    url = "https://github.com/NOBLES5E/copilot-cmp"
+  },
+  ["copilot.lua"] = {
+    loaded = true,
+    path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
+  },
   ["diffview.nvim"] = {
     loaded = true,
     path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/diffview.nvim",

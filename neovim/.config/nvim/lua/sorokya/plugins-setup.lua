@@ -119,6 +119,10 @@ return packer.startup(function(use)
 	-- whichkey
 	use("folke/which-key.nvim")
 
+	-- copilot
+	use("zbirenbaum/copilot.lua")
+	use("NOBLES5E/copilot-cmp")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
