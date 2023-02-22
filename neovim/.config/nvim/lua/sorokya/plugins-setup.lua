@@ -123,6 +123,13 @@ return packer.startup(function(use)
 	use("zbirenbaum/copilot.lua")
 	use("NOBLES5E/copilot-cmp")
 
+	-- leap
+	use("ggandor/leap.nvim")
+	use("tpope/vim-repeat")
+
+	-- indent guides
+	use("lukas-reineke/indent-blankline.nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
