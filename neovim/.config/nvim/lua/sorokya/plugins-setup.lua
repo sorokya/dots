@@ -114,6 +114,7 @@ return packer.startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 	use({ "TimUntersberger/neogit", required = "nvim-lua/plenary.nvim" })
+	use({ "sindrets/diffview.nvim", required = "nvim-lua/plenary.nvim" })
 
 	-- whichkey
 	use("folke/which-key.nvim")
