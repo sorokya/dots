@@ -56,6 +56,7 @@ whichkey.register({
 		b = { "<cmd> Telescope git_branches <cr>", "Checkout branch" },
 		f = { "<cmd> Telescope find_files <cr>", "Find files" },
 		t = { "<cmd> Telescope live_grep <cr>", "Find text" },
+		T = { "<cmd> Telescope live_grep_args <cr>", "Live grep (args)" },
 		s = { "<cmd> Telescope grep_string <cr>", "Find string" },
 		h = { "<cmd> Telescope help_tags <cr>", "Help" },
 		H = { "<cmd> Telescope highlights <cr>", "Highlights" },
