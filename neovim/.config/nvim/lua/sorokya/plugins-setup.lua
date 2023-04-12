@@ -35,7 +35,8 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- preferred color scheme
-	use("sainnhe/everforest")
+	--use("sainnhe/everforest")
+	use("folke/tokyonight.nvim")
 
 	-- tmux & split window navigation
 	use("christoomey/vim-tmux-navigator")
@@ -119,8 +120,16 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
-	use({ "TimUntersberger/neogit", required = "nvim-lua/plenary.nvim" })
-	use({ "sindrets/diffview.nvim", required = "nvim-lua/plenary.nvim" })
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+	use({
+		"pwntester/octo.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"kyazdani42/nvim-web-devicons",
+		},
+	})
 
 	-- whichkey
 	use("folke/which-key.nvim")

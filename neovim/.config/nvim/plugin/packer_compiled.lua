@@ -119,11 +119,6 @@ _G.packer_plugins = {
     path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
-  everforest = {
-    loaded = true,
-    path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/everforest",
-    url = "https://github.com/sainnhe/everforest"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -221,6 +216,11 @@ _G.packer_plugins = {
     path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
+  ["octo.nvim"] = {
+    loaded = true,
+    path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/octo.nvim",
+    url = "https://github.com/pwntester/octo.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -245,6 +245,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/sorokya/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["typescript.nvim"] = {
     loaded = true,

@@ -3,4 +3,8 @@ if not status then
 	return
 end
 
-neogit.setup({})
+neogit.setup({
+  integrations = {
+    diffview = true
+  }
+})

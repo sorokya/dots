@@ -17,7 +17,8 @@ null_ls.setup({
 	sources = {
 		--  to disable file types use
 		--  "formatting.prettier.with({disabled_filetypes: {}})"
-		formatting.rome, -- js/ts formatter+linter
+    diagnostics.eslint, -- js/ts linter
+		formatting.prettier, -- js/ts formatter
 		formatting.stylua, -- lua formatter
 		formatting.rustfmt, -- rust formatter
 	},
