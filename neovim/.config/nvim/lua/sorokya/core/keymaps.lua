@@ -51,6 +51,7 @@ whichkey.register({
 		p = { "<cmd> tabp <cr>", "Previous tab" },
 	},
 	e = { "<cmd> NvimTreeToggle <cr>", "Toggle file tree" },
+	E = { "<cmd> NvimTreeFindFile <cr>", "Find file in tree" },
 	f = {
 		name = "Find",
 		b = { "<cmd> Telescope git_branches <cr>", "Checkout branch" },
