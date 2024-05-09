@@ -1,10 +1,9 @@
--- import whichkey plugin safely
-local status, whichkey = pcall(require, "which-key")
-if not status then
-	return
-end
-
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
-whichkey.setup({})
+return {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {}
+}

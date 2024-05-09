@@ -1,10 +1,10 @@
-local status, neogit = pcall(require, "neogit")
-if not status then
-	return
-end
-
-neogit.setup({
-  integrations = {
-    diffview = true
-  }
-})
+return {
+    "NeogitOrg/neogit",
+    branch = "nightly",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = true
+}

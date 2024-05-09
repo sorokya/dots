@@ -1,12 +1,7 @@
-local status, lualine = pcall(require, "lualine")
-if not status then
-  return
-end
-
-local lualine_everforest = require("lualine.themes.everforest")
-
-lualine.setup({
-  options = {
-    theme = lualine_everforest
-  }
-})
+return {
+	"nvim-lualine/lualine.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = function()
+		require("lualine").setup({})
+	end,
+}

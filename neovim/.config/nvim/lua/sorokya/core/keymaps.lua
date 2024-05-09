@@ -1,11 +1,4 @@
--- space for leader
-vim.g.mapleader = " "
-
--- import whichkey plugin safely
-local status, whichkey = pcall(require, "which-key")
-if not status then
-	return
-end
+local whichkey = require("which-key")
 
 local keymap = vim.keymap
 
@@ -15,6 +8,7 @@ keymap.set("i", "jk", "<ESC>") -- leave insert mode with jk
 keymap.set("n", "<ESC>", "<cmd> nohl <cr>", {
 	desc = "Clear search highlights",
 })
+
 keymap.set("n", "x", '"_x') -- delete without copying to register
 
 whichkey.register({
@@ -28,20 +22,9 @@ whichkey.register({
 	g = {
 		name = "Git",
 		g = { "<cmd> Neogit <cr>", "Neogit" },
-		j = { "<cmd> Gitsigns next_hunk <cr>", "Next hunk" },
-		k = { "<cmd> Gitsigns prev_hunk <cr>", "Previous hunk" },
-		l = { "<cmd> GitBlameToggle <cr>", "Blame" },
-		p = { "<cmd> Gitsigns preview_hunk <cr>", "Preview hunk" },
-		r = { "<cmd> Gitsigns reset_hunk <cr>", "Reset hunk" },
-		R = { "<cmd> Gitsigns reset_buffer <cr>", "Reset buffer" },
-		s = { "<cmd> Gitsigns stage_hunk <cr>", "Stage hunk" },
-		u = { "<cmd> Gitsigns undo_stage_hunk <cr>", "Undo stage hunk" },
-		n = { ":!git checkout -b ", "Checkout new branch" },
 		o = { "<cmd> Telescope git_status <cr>", "Open changed files" },
 		b = { "<cmd> Telescope git_branches <cr>", "Checkout branch" },
 		c = { "<cmd> Telescope git_commits <cr>", "Checkout commit" },
-		f = { "<cmd> Telescope git_bcommits <cr>", "Checkout buffer commit" },
-		d = { "<cmd> Gitsigns diffthis HEAD <cr>", "Diff" },
 	},
 	t = {
 		name = "Tab",
@@ -67,5 +50,6 @@ whichkey.register({
 		R = { "<cmd> Telescope registers <cr>", "Registers" },
 		k = { "<cmd> Telescope keymaps <cr>", "Keymaps" },
 		C = { "<cmd> Telescope commands <cr>", "Commands" },
+		u = { "<cmd> Telescope undo <cr>", "Undos" },
 	},
 }, { prefix = "<leader>" })
