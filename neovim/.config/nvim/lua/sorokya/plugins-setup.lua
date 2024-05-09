@@ -13,7 +13,7 @@ local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
 -- autocommand that reloads neovim and installs/updates/removes plugins
 -- when file is saved
-vim.cmd([[ 
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
@@ -89,14 +89,6 @@ return packer.startup(function(use)
 	-- configuring lsp servers
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		requires = {
-			{ "nvim-tree/nvim-web-devicons" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	}) -- enhanced lsp uis
 
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
@@ -121,7 +113,6 @@ return packer.startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
-	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use({
 		"pwntester/octo.nvim",
 		requires = {
@@ -135,8 +126,8 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 
 	-- copilot
-	use("zbirenbaum/copilot.lua")
-	use("NOBLES5E/copilot-cmp")
+	-- use("zbirenbaum/copilot.lua")
+	-- use("NOBLES5E/copilot-cmp")
 
 	-- leap
 	use("ggandor/leap.nvim")

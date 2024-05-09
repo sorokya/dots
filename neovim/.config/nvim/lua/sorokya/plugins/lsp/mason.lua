@@ -14,17 +14,12 @@ mason.setup()
 
 mason_lspconfig.setup({
 	ensure_installed = {
-		"cssls",
-		"cucumber_language_server",
-		"dockerls",
-		"docker_compose_language_service",
-		"graphql",
 		"html",
 		"tsserver",
 		"rust_analyzer",
 		"tailwindcss",
-		"terraformls",
 		"lua_ls",
+		"biome",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed

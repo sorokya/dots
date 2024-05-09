@@ -32,22 +32,19 @@ local on_attach = function(client, bufnr)
 	whichkey.register({
 		l = {
 			name = "LSP",
-			a = { "<cmd> Lspsaga code_action <cr>", "Show available code actions" },
-			r = { "<cmd> Lspsaga rename <cr>", "Smart rename" },
-			D = { "<cmd> Lspsaga show_line_diagnostics <cr>", "Show diagnostics for line" },
-			d = { "<cmd> Lspsaga show_cursor_diagnostics <cr>", "Show diagnostics for cursor" },
+			a = { "<cmd> lua vim.lsp.buf.code_action() <cr>", "Show available code actions" },
+			r = { "<cmd> lua vim.lsp.buf.rename() <cr>", "Smart rename" },
+			d = { "<cmd> lua vim.diagnostics.open_float() <cr>", "Show diagnostics for line" },
 		},
-		o = { "<cmd> Lspsaga outline <cr>", "Toggle outline" },
 	}, { prefix = "<leader>", buffer = bufnr })
 
 	whichkey.register({
 		g = {
-			f = { "<cmd> Lspsaga lsp_finder <cr>", "Show definition & references" },
-			D = { "<cmd> lua vim.lsp.buf.declaration() <cr>", "Go to declaration" },
-			d = { "<cmd> Lspsaga peek_definition <cr>", "Peek definition" },
+			d = { "<cmd> lua vim.lsp.buf.declaration() <cr>", "Go to declaration" },
 			i = { "<cmd> lua vim.lsp.buf.implementation() <cr>", "Go to implementation" },
+			r = { "<cmd> lua vim.lsp.buf.references() <cr>", "Go to references" },
 		},
-		K = { "<cmd> Lspsaga hover_doc <cr>", "Show documentation for what is under cursor" },
+		K = { "<cmd> lua vim.lsp.buf.hover() <cr>", "Show documentation for what is under cursor" },
 	}, { buffer = bufnr })
 end
 
@@ -75,50 +72,19 @@ typescript.setup({
 	},
 })
 
--- configure css server
-lspconfig["cssls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
--- configure dockerls
-lspconfig["dockerls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
--- configure docker compose server
-lspconfig["docker_compose_language_service"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
--- configure graphql server
-lspconfig["graphql"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
 -- configure rust server
 lspconfig["rust_analyzer"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-})
-
--- configure terraform server
-lspconfig["terraform_lsp"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
+	settings = {
+		checkOnSave = {
+			command = "clippy",
+		},
+	},
 })
 
 -- configure tailwindcss server
 lspconfig["tailwindcss"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
--- configure cucumber server
-lspconfig["cucumber_language_server"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })

@@ -15,8 +15,6 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	-- setup formatters & linters
 	sources = {
-		--  to disable file types use
-		--  "formatting.prettier.with({disabled_filetypes: {}})"
 		diagnostics.eslint_d, -- js/ts linter
 		formatting.prettier, -- js/ts formatter
 		formatting.eslint_d, -- auto fix eslint issues
@@ -32,10 +30,6 @@ null_ls.setup({
 				buffer = bufnr,
 				callback = function()
 					vim.lsp.buf.format({
-						filter = function(client)
-							--  only use null-ls for formatting instead of lsp server
-							return client.name == "null-ls"
-						end,
 						bufnr = bufnr,
 					})
 				end,
