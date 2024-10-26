@@ -21,25 +21,21 @@ local on_attach = function(client, bufnr)
 		})
 	end
 
-	whichkey.register({
-		l = {
-			name = "LSP",
-			a = { "<cmd> Lspsaga code_action <cr>", "Show available code actions" },
-			r = { "<cmd> Lspsaga rename <cr>", "Smart rename" },
-			d = { "<cmd> Lspsaga show_line_diagnostics <cr>", "Show diagnostics for line" },
-			o = { "<cmd> Lspsaga outline <cr>", "Show outline" },
-		},
-	}, { prefix = "<leader>", buffer = bufnr })
+	whichkey.add({
+		{ "<leader>l", group = "LSP" },
+		{ "<leader>la", "<cmd> Lspsaga code_action <cr>", desc = "Split window vertically" },
+		{ "<leader>lr", "<cmd> Lspsaga rename <cr>", desc = "Smart rename" },
+		{ "<leader>ld", "<cmd> Lspsaga show_line_diagnostics <cr>", desc = "Show diagnostics for line" },
+		{ "<leader>lo", "<cmd> Lspsaga outline <cr>", desc = "Show outline" },
+	})
 
-	whichkey.register({
-		g = {
-			f = { "<cmd> Lspsaga finder <cr>", "Show definition & references" },
-			D = { "<cmd> lua vim.lsp.buf.declaration() <cr>", "Go to declaration" },
-			d = { "<cmd> Lspsaga peek_definition <cr>", "Peek definition" },
-			i = { "<cmd> lua vim.lsp.buf.implementation() <cr>", "Go to implementation" },
-		},
-		K = { "<cmd> Lspsaga hover_doc <cr>", "Show documentation for what is under cursor" },
-	}, { buffer = bufnr })
+	whichkey.add({
+		{ "gf", "<cmd> Lspsaga lsp_finder <cr>", desc = "Show definition & references" },
+		{ "gD", "<cmd> Lspsaga goto_definition <cr>", desc = "Go to definition" },
+		{ "gd", "<cmd> Lspsaga peek_definition <cr>", desc = "Peek definition" },
+		{ "gi", "<cmd> Lspsaga implementation <cr>", desc = "Go to implementation" },
+		{ "K", "<cmd> Lspsaga hover_doc <cr>", desc = "Show documentation for what is under cursor" },
+	})
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
@@ -53,6 +49,7 @@ for type, icon in pairs(signs) do
 end
 
 lspconfig["html"].setup({
+	filetypes = { "html", "templ", "php" },
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
@@ -97,7 +94,7 @@ lspconfig["lua_ls"].setup({
 	},
 })
 
-lspconfig["tsserver"].setup({
+lspconfig["ts_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
@@ -145,8 +142,8 @@ cmp.setup({
 	}),
 	-- sources for autocompletion
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" }, -- lsp
 		{ name = "codeium" }, -- codeium
+		{ name = "nvim_lsp" }, -- lsp
 		{ name = "luasnip" }, -- snippets
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
