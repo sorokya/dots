@@ -3,7 +3,6 @@ local whichkey = require("which-key")
 local null_ls = require("null-ls")
 local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
 -- enable keybinds only for when lsp server available
@@ -104,6 +103,21 @@ lspconfig["rust_analyzer"].setup({
 	on_attach = on_attach,
 })
 
+lspconfig["zls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["pylsp"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["phpactor"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
@@ -142,7 +156,6 @@ cmp.setup({
 	}),
 	-- sources for autocompletion
 	sources = cmp.config.sources({
-		{ name = "codeium" }, -- codeium
 		{ name = "nvim_lsp" }, -- lsp
 		{ name = "luasnip" }, -- snippets
 		{ name = "buffer" }, -- text within current buffer
